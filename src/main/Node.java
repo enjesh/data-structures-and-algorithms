@@ -13,8 +13,11 @@ public class Node {
         this.data = data;
     }
 
-    public void setNext(Node node){
-        this.next = node;
+    public void setNext(Node node) throws IllegalArgumentException{
+        if (!this.equals(node))
+            this.next = node;
+        else
+            throw new IllegalArgumentException("node cannot be linked to itself");
     }
 
     public String getData(){

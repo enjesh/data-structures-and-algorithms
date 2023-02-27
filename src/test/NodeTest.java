@@ -15,4 +15,9 @@ public class NodeTest {
         firstNode.setNext(secondNode);
         assertEquals(firstNode.getNext(), secondNode);
     }
+
+    @Test
+    public void whenNodeLinksToItself_throw_IllegalArgumentException(){
+        assertThrows(IllegalArgumentException.class, ()->firstNode.setNext(firstNode));
+    }
 }
