@@ -1,15 +1,15 @@
 package main;
 
-public class Node {
-    private String data;
+public class Node <T> {
+    private T data;
     private Node next;
 
-    public Node(String data){
+    public Node(T data){
         this.data = data;
         this.next = null;
     }
 
-    public void setData(String data){
+    public void setData(T data){
         this.data = data;
     }
 
@@ -20,11 +20,14 @@ public class Node {
             throw new IllegalArgumentException("node cannot be linked to itself");
     }
 
-    public String getData(){
+    public T getData(){
         return this.data;
     }
 
-    public Node getNext(){
+    public Node getNext() throws NullPointerException{
+        if (this.next == null){
+            throw new NullPointerException();
+        }
         return this.next;
     }
 }
