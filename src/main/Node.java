@@ -20,6 +20,16 @@ public class Node <T> {
             throw new IllegalArgumentException("node cannot be linked to itself");
     }
 
+    public boolean hasNext(){
+        boolean hasNext;
+        try{
+            hasNext = !this.getNext().equals(null);
+        } catch (NullPointerException e){
+            hasNext = false;
+        }
+        return hasNext;
+    }
+
     public T getData(){
         return this.data;
     }
@@ -30,4 +40,12 @@ public class Node <T> {
         }
         return this.next;
     }
+
+    @Override
+    public String toString() {
+        return "Node{" +
+                "data=" + data +
+                '}';
+    }
 }
+

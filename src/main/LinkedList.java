@@ -18,19 +18,17 @@ public class LinkedList {
     }
 
     public void addToHead(Node node) {
-        Node newHead = node;
         if (this.head != null){
             Node currentHead = this.head;
-            newHead.setNext(currentHead);
-            this.head = newHead;
-    }else{
-        this.head = newHead;
-        this.tail = this.head;
+            node.setNext(currentHead);
+            this.head = node;
+        }else{
+            this.head = node;
+            this.tail = this.head;
         }
     }
 
     public void addToTail(Node node) throws NullPointerException{
-        Node newTail = node;
         if (this.head == null){
             throw new NullPointerException("empty list cannot have a node!");
         }
@@ -42,4 +40,49 @@ public class LinkedList {
         this.tail = node;
 
     }
+
+    public void add(Node node) {
+        if (this.head == null){
+            addToHead(node);
+        } else {
+            addToTail(node);
+            }
+        }
+
+    public String print() {
+        String output = "<head> ";
+        Node currentNode = this.head;
+        for (Node i = currentNode; i == this.tail; i = currentNode.getNext()) {
+            output += i.getData() + " ";
+        }
+        output += "<tail>";
+        return output;
+    }
+
+    private void removeHead(){
+        Node currentHead = this.head;
+        if (currentHead.hasNext())
+            this.head = currentHead.getNext();
+        else
+            this.head = null;
+            this.tail = null;
+    }
+
+
+
+//    public Node remove(int idx) throws IllegalArgumentException{
+//        if (idx < 0){
+//            throw new IllegalArgumentException("index has to be positive") ;
+//        }
+//        if (idx == 0)
+//            removeHead();
+//        else {
+//            Node currentNode = this.head;
+//            for (int i = 0; i <= idx - 1; i++) {
+//                currentNode = currentNode.getNext();
+//                Node nodeToRemove = currentNode.getNext();
+//                currentNode.setNext(nodeToRemove.getNext());
+//            }
+//        }
+//    }
 }

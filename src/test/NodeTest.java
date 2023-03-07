@@ -24,4 +24,9 @@ public class NodeTest {
         assertThrows(IllegalArgumentException.class, ()->firstNode.setNext(firstNode));
     }
 
+    @Test
+    public void Given_aNode_whenNodeHasNoNextNode_Then_hasNextShouldReturnFalse(){
+        assertFalse(new Node<String>("this").hasNext());
+    }
+
 }
