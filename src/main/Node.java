@@ -1,8 +1,8 @@
 package main;
 
-public class Node <T> {
+public class Node<T> {
     private T data;
-    private Node next;
+    private Node<T> next;
 
     public Node(T data){
         this.data = data;
@@ -13,7 +13,7 @@ public class Node <T> {
         this.data = data;
     }
 
-    public void setNext(Node node) throws IllegalArgumentException{
+    public void setNext(Node<T> node) throws IllegalArgumentException{
         if (!this.equals(node))
             this.next = node;
         else

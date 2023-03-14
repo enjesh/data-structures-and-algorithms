@@ -1,6 +1,6 @@
 package main;
 
-public class LinkedList {
+public class LinkedList<T> {
     private Node head;
     private Node tail;
 
@@ -29,16 +29,11 @@ public class LinkedList {
     }
 
     public void addToTail(Node node) throws NullPointerException{
-        if (this.head == null){
+        if (this.tail == null){
             throw new NullPointerException("empty list cannot have a node!");
         }
-        if (this.head.equals(this.tail)){
-            this.head.setNext(node);
-        }else {
             this.tail.setNext(node);
-        }
-        this.tail = node;
-
+            this.tail = node;
     }
 
     public void add(Node node) {

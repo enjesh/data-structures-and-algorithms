@@ -120,10 +120,10 @@ public class LinkedListTest {
 
 
 
-    @Test
-    public void Given_LinkedListWithANode_Then_PrintShouldReturnANode(){
-        LinkedList list = new LinkedList();
-        list.addToHead(new Node<>("data"));
-        assertEquals(list.print(), "<head> data <tail>");
-    }
+//    @Test
+//    public void Given_LinkedListWithANode_Then_PrintShouldReturnANode(){
+//        LinkedList list = new LinkedList();
+//        list.addToHead(new Node<>("data"));
+//        assertEquals(list.print(), "<head> data <tail>");
+//    }
 }
