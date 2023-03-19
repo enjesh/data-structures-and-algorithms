@@ -46,8 +46,7 @@ public class LinkedList<T> {
 
     public String print() {
         String output = "<head> ";
-        Node currentNode = this.head;
-        for (Node i = currentNode; i == this.tail; i = currentNode.getNext()) {
+        for (Node i = this.head; i != null; i = i.getNext()) {
             output += i.getData() + " ";
         }
         output += "<tail>";
@@ -64,20 +63,23 @@ public class LinkedList<T> {
     }
 
 
-
-//    public Node remove(int idx) throws IllegalArgumentException{
-//        if (idx < 0){
-//            throw new IllegalArgumentException("index has to be positive") ;
-//        }
-//        if (idx == 0)
-//            removeHead();
-//        else {
-//            Node currentNode = this.head;
-//            for (int i = 0; i <= idx - 1; i++) {
-//                currentNode = currentNode.getNext();
-//                Node nodeToRemove = currentNode.getNext();
-//                currentNode.setNext(nodeToRemove.getNext());
-//            }
-//        }
-//    }
+    public void remove(int i) {
+        if (i == 0)
+            removeHead();
+        else {
+            Node preNodeToRemove = this.head;
+            for (int j = 0; j < i - 1; j++) {
+                preNodeToRemove = preNodeToRemove.getNext();
+            }
+            Node nodeToRemove = preNodeToRemove.getNext();
+            /*check if the node to remove is the tail*/
+            if (nodeToRemove.getNext() == null){
+                preNodeToRemove.setNext(null);
+                this.tail = preNodeToRemove;
+            }
+            else {
+                preNodeToRemove.setNext(nodeToRemove.getNext());
+            }
+        }
+    }
 }

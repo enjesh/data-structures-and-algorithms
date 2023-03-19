@@ -118,12 +118,74 @@ public class LinkedListTest {
 //    @Test
 //    public void Given_LinkedListWithANode_When_AddingANode_Then_
 
+    @Test
+    public void Given_EmptyLinkedList_Then_PrintShouldReturnEmptyList(){
+        LinkedList list = new LinkedList();
+        assertEquals("<head> <tail>", list.print());
+    }
 
+    @Test
+    public void Given_LinkedListWithANode_Then_PrintShouldReturnANode(){
+        LinkedList list = new LinkedList();
+        list.addToHead(new Node<>("data"));
+        assertEquals("<head> data <tail>", list.print());
+    }
 
-//    @Test
-//    public void Given_LinkedListWithANode_Then_PrintShouldReturnANode(){
-//        LinkedList list = new LinkedList();
-//        list.addToHead(new Node<>("data"));
-//        assertEquals(list.print(), "<head> data <tail>");
-//    }
+    @Test
+    public void Given_LinkedListWithTwoNodes_Then_PrintShouldReturnTwoNodes(){
+        LinkedList list = new LinkedList();
+        list.addToHead(new Node<>("data"));
+        list.addToHead(new Node<>("data2"));
+        assertEquals("<head> data2 data <tail>", list.print());
+    }
+
+    @Test
+    public void Given_LinkedListWithANode_When_RemoveNodeAtIndexZero_Then_LinkedListShouldBeEmpty(){
+        LinkedList list = new LinkedList();
+        list.addToHead(new Node<>("data"));
+        list.remove(0);
+        assertNull(list.getHead());
+    }
+
+    @Test
+    public void Given_LinkedListWithTwoNodes_When_RemoveNodeAtIndexZero_Then_LinkedListShouldHaveOneNode() {
+        LinkedList list = new LinkedList();
+        Node data2 = new Node<>("data2");
+        list.addToHead(data2);
+        list.addToHead(new Node<>("data"));
+        list.remove(0);
+        assertEquals(list.getHead(), data2);
+    }
+
+    @Test
+    public void Given_LinkedListWithThreeNodes_When_RemoveNodeAtIndexOne_Then_LinkedListShouldHaveTwoNodes(){
+        LinkedList list = new LinkedList();
+        list.add( new Node<>("data1"));
+        list.add( new Node<>("data2"));
+        list.add(new Node<>("data3"));
+        list.remove(1);
+        assertEquals("<head> data1 data3 <tail>", list.print());
+    }
+
+    @Test
+    public void Given_LinkedListWithThreeNodes_When_RemoveLastNode_Then_LinkedListShouldHaveTwoNodes(){
+        LinkedList list = new LinkedList();
+        list.add( new Node<>("data1"));
+        list.add( new Node<>("data2"));
+        list.add(new Node<>("data3"));
+        list.remove(2);
+        assertEquals("<head> data1 data2 <tail>", list.print());
+    }
+
+    @Test
+    public void Given_LinkedListWithThreeNodes_When_RemoveLastNode_Then_TailShouldChange(){
+        LinkedList list = new LinkedList();
+        Node<String> newTail = new Node<>("data2");
+        list.add( new Node<>("data1"));
+        list.add(newTail);
+        list.add( new Node<>("data3"));
+        list.remove(2);
+        assertEquals(newTail, list.getTail());
+    }
+
 }
