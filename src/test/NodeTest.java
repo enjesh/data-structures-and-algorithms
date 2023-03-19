@@ -15,8 +15,8 @@ public class NodeTest {
         assertEquals(firstNode.getNext(), secondNode);
     }
     @Test
-    public void Given_aNode_When_itHasNoPointer_Then_getNextShouldThrowNullPointerException(){
-        assertThrows(NullPointerException.class, () -> {firstNode.getNext();});
+    public void Given_aNode_When_itHasNoPointer_Then_getNextShouldReturnNull(){
+        assertEquals(null, firstNode.getNext());
     }
 
     @Test

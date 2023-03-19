@@ -21,23 +21,14 @@ public class Node<T> {
     }
 
     public boolean hasNext(){
-        boolean hasNext;
-        try{
-            hasNext = !this.getNext().equals(null);
-        } catch (NullPointerException e){
-            hasNext = false;
-        }
-        return hasNext;
+        return !(this.getNext() == null);
     }
 
     public T getData(){
         return this.data;
     }
 
-    public Node getNext() throws NullPointerException{
-        if (this.next == null){
-            throw new NullPointerException();
-        }
+    public Node getNext() {
         return this.next;
     }
 
