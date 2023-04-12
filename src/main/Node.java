@@ -28,7 +28,7 @@ public class Node<T> {
         return this.data;
     }
 
-    public Node getNext() {
+    public Node<T> getNext() {
         return this.next;
     }
 

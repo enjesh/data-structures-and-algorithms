@@ -1,6 +1,6 @@
 package main;
 
-public class LinkedList<T> {
+public class LinkedList {
     private Node head;
     private Node tail;
 
@@ -57,9 +57,10 @@ public class LinkedList<T> {
         Node currentHead = this.head;
         if (currentHead.hasNext())
             this.head = currentHead.getNext();
-        else
+        else {
             this.head = null;
             this.tail = null;
+        }
     }
 
 
@@ -81,5 +82,17 @@ public class LinkedList<T> {
                 preNodeToRemove.setNext(nodeToRemove.getNext());
             }
         }
+    }
+
+    public void reverse() {
+        Node start = this.head.getNext();
+        this.head.setNext(null);
+        Node currentTail = this.tail;
+        for (Node i = start; i != currentTail ; ) {
+            Node next = i.getNext();
+            this.addToHead(i);
+            i = next;
+        }
+        this.addToHead(currentTail);
     }
 }

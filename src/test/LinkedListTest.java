@@ -115,9 +115,6 @@ public class LinkedListTest {
         assertEquals(list.getTail(), newNode);
     }
 
-//    @Test
-//    public void Given_LinkedListWithANode_When_AddingANode_Then_
-
     @Test
     public void Given_EmptyLinkedList_Then_PrintShouldReturnEmptyList(){
         LinkedList list = new LinkedList();
@@ -188,4 +185,16 @@ public class LinkedListTest {
         assertEquals(newTail, list.getTail());
     }
 
+    @Test
+    public void Given_LinkedListWithThreeNodes_When_ReverseList_Then_OrderShouldChange() {
+        LinkedList list = new LinkedList();
+        list.add(new Node<>("data1"));
+        list.add(new Node<>("data2"));
+        list.add(new Node<>("data3"));
+        list.add(new Node<>("data4"));
+        list.add(new Node<>("data5"));
+        list.add(new Node<>("data6"));
+        list.reverse();
+        assertEquals("<head> data6 data5 data4 data3 data2 data1 <tail>", list.print());
+    }
 }
