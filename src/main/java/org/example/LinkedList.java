@@ -1,5 +1,11 @@
 package org.example;
 
+/**
+ * Implementation of Linkedlist that uses Node class
+ * Keeping track of head node and size of list.
+ *
+ * @param <T> – the type of elements in this list
+ */
 public class LinkedList <T>{
     private Node<T> head;
     private int size = 0;
