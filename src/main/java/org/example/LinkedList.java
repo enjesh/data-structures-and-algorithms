@@ -26,6 +26,11 @@ public class LinkedList <T>{
         size++;
     }
 
+    /**
+     * Adds a new node to the end of the linked list.
+     *
+     * @param newTail the new node to add as the new tail of the list.
+     */
     private void addToTail(Node<T> newTail){
         if (this.head == null)
             this.head = newTail;
