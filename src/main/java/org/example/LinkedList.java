@@ -14,6 +14,11 @@ public class LinkedList <T>{
         return this.head;
     }
 
+    /**
+     * Adds a new node to the beginning of the linked list.
+     *
+     * @param newHead the new node to add as the new head of the list.
+     */
     private void addToHead(Node<T> newHead){
         if (this.head != null)
             newHead.setNext(this.head);
@@ -21,6 +26,11 @@ public class LinkedList <T>{
         size++;
     }
 
+    /**
+     * Adds a new node to the end of the linked list.
+     *
+     * @param newTail the new node to add as the new tail of the list.
+     */
     private void addToTail(Node<T> newTail){
         if (this.head == null)
             this.head = newTail;
