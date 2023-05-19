@@ -105,4 +105,76 @@ class LinkedListTest {
         assertEquals(major, list.getHead());
         assertEquals(mart, major.getNext());
     }
+
+    @Test
+    void Given_LinkedList_When_Size2_Then_RemoveAtIndexGreaterThan1ThrowsIndexOutOfBoundsException() {
+        LinkedList<String> list = new LinkedList<>();
+        list.add(new Node<>("Major"));
+        list.add(new Node<>("Mart"));
+
+        assertThrows(IndexOutOfBoundsException.class, ()->list.remove(5));
+    }
+
+    @Test
+    void Given_LinkedList_When_Empty_Then_RemoveThrowsIllegalStateException() {
+        LinkedList<String> list = new LinkedList<>();
+        assertThrows(IllegalStateException.class, list::removeHead);
+    }
+
+    @Test
+    void Given_LinkedList_When_SizeIs1_Then_ListIsEmptyAfterRemoveOperation() {
+        LinkedList<String> list = new LinkedList<>();
+        list.add(new Node<>("liz"));
+        list.remove(0);
+        assertTrue(list.IsEmpty());
+    }
+
+    @Test
+    void Given_LinkedList_When_SizeIs2_Then_TailIsNewHeadAfterRemoveOperation() {
+        LinkedList<String> list = new LinkedList<>();
+        Node<String> liz = new Node<>("liz");
+        Node<String> major = new Node<>("Major");
+
+        list.add(liz);
+        list.add(major);
+
+        list.remove(0);
+        assertFalse(list.IsEmpty());
+        assertEquals(major, list.getHead());
+    }
+
+    @Test
+    void Given_LinkedList_When_SizeIs4_Then_ListIsEmptyAfter4RemoveHeadOperations() {
+        LinkedList<String> list = new LinkedList<>();
+        Node<String> liz = new Node<>("liz");
+        Node<String> major = new Node<>("Major");
+        Node<String> mart = new Node<>("Mart");
+        Node<String> joe = new Node<>("Joe");
+
+        list.add(liz);
+        list.add(mart);
+        list.add(major);
+        list.add(joe);
+
+        list.removeHead();
+        list.removeHead();
+        list.removeHead();
+        list.removeHead();
+
+        assertTrue(list.IsEmpty());
+    }
+
+    @Test
+    void Given_LinkedList_When_Empty_Then_RemoveTailThrowsIllegalStateException() {
+        LinkedList<String> list = new LinkedList<>();
+        assertThrows(IllegalStateException.class, ()->list.remove(0));
+    }
+
+    @Test
+    void Given_LinkedList_When_SizeIs1_Then_ListIsEmptyAfterRemoveTailOperation() {
+        LinkedList<String> list = new LinkedList<>();
+        list.add(new Node<>("liz"));
+        list.remove(list.getSize()-1);
+        assertTrue(list.IsEmpty());
+    }
 }

@@ -8,10 +8,22 @@ package org.example;
  */
 public class LinkedList <T>{
     private Node<T> head;
-    private int size = 0;
+    private int size;
 
     public Node<T> getHead() {
         return this.head;
+    }
+
+    public int getSize() {
+        return size;
+    }
+
+    public LinkedList() {
+        this.size = 0;
+    }
+
+    public boolean IsEmpty(){
+        return (this.head == null);
     }
 
     private void addToHead(Node<T> newHead){
@@ -30,8 +42,8 @@ public class LinkedList <T>{
                 currentNode = currentNode.getNext();
             }
             currentNode.setNext(newTail);
-            size++;
         }
+        size++;
     }
 
     public void add(Node<T> node, int index){
@@ -62,4 +74,51 @@ public class LinkedList <T>{
         addToTail(node);
     }
 
+
+    public void removeHead() {
+        if (this.IsEmpty()) {
+            throw new IllegalStateException("can not remove from empty list");
+        }
+        Node<T> currentHead = this.head;
+        if (currentHead.hasNext())
+            this.head = currentHead.getNext();
+        else
+            this.head = null;
+        this.size--;
+    }
+
+    public void remove(int index) {
+        if (this.IsEmpty())
+            throw new IllegalStateException("can not remove from empty list");
+        if (index < 0)
+            throw new IllegalArgumentException("index must be non-negative");
+        if (index >= size)
+            throw new IndexOutOfBoundsException("index can not be greater than current size " + this.size);
+
+        Node<T> pointer = this.head;
+        Node<T> nodeToRemove;
+        if (index == 0){
+            nodeToRemove = pointer;
+        }
+        else {
+            int counter = 1;
+            while (counter != index) {
+                pointer = pointer.getNext();
+                counter++;
+            }
+            nodeToRemove = pointer.getNext();
+        }
+
+        if (nodeToRemove.hasNext()){
+            pointer.setNext(nodeToRemove.getNext());
+        }
+        else {
+            if (nodeToRemove == pointer)
+                this.head = null;
+            else
+                pointer.setNext(null);
+        }
+        size--;
+
+    }
 }
