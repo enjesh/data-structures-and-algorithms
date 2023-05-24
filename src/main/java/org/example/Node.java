@@ -21,7 +21,7 @@ public class Node<T> {
     }
 
     public void setNext(Node<T> next) throws IllegalArgumentException{
-        if (next.equals(this)){
+        if (next == this){
             throw new IllegalArgumentException("Node cannot point to itself");
         }
         else
