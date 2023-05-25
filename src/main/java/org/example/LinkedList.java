@@ -14,6 +14,10 @@ public class LinkedList <T>{
         return this.head;
     }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> upstream/joe
     public int getSize() {
         return size;
     }
@@ -26,6 +30,14 @@ public class LinkedList <T>{
         return (this.head == null);
     }
 
+<<<<<<< HEAD
+=======
+    /**
+     * Adds a new node to the beginning of the linked list.
+     *
+     * @param newHead the new node to add as the new head of the list.
+     */
+>>>>>>> upstream/joe
     private void addToHead(Node<T> newHead){
         if (this.head != null)
             newHead.setNext(this.head);
@@ -33,6 +45,11 @@ public class LinkedList <T>{
         size++;
     }
 
+    /**
+     * Adds a new node to the end of the linked list.
+     *
+     * @param newTail the new node to add as the new tail of the list.
+     */
     private void addToTail(Node<T> newTail){
         if (this.head == null)
             this.head = newTail;
@@ -74,6 +91,7 @@ public class LinkedList <T>{
         addToTail(node);
     }
 
+<<<<<<< HEAD
 
     public void removeHead() {
         if (this.IsEmpty()) {
@@ -87,6 +105,8 @@ public class LinkedList <T>{
         this.size--;
     }
 
+=======
+>>>>>>> upstream/joe
     public void remove(int index) {
         if (this.IsEmpty())
             throw new IllegalStateException("can not remove from empty list");
@@ -99,14 +119,26 @@ public class LinkedList <T>{
         Node<T> nodeToRemove;
         if (index == 0){
             nodeToRemove = pointer;
+<<<<<<< HEAD
         }
         else {
             int counter = 1;
             while (counter != index) {
+=======
+            if (nodeToRemove.hasNext())
+                this.head = nodeToRemove.getNext();
+            else
+                this.head = null;
+        }
+        else {
+            int counter = 1;
+            while (counter < index) {
+>>>>>>> upstream/joe
                 pointer = pointer.getNext();
                 counter++;
             }
             nodeToRemove = pointer.getNext();
+<<<<<<< HEAD
         }
 
         if (nodeToRemove.hasNext()){
@@ -115,10 +147,21 @@ public class LinkedList <T>{
         else {
             if (nodeToRemove == pointer)
                 this.head = null;
+=======
+            if (nodeToRemove.hasNext())
+                pointer.setNext(nodeToRemove.getNext());
+>>>>>>> upstream/joe
             else
                 pointer.setNext(null);
         }
         size--;
+<<<<<<< HEAD
 
+=======
+    }
+
+    public int search(T data){
+        return -1;
+>>>>>>> upstream/joe
     }
 }

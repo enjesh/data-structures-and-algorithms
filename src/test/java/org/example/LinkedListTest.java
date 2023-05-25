@@ -118,7 +118,11 @@ class LinkedListTest {
     @Test
     void Given_LinkedList_When_Empty_Then_RemoveThrowsIllegalStateException() {
         LinkedList<String> list = new LinkedList<>();
+<<<<<<< HEAD
         assertThrows(IllegalStateException.class, list::removeHead);
+=======
+        assertThrows(IllegalStateException.class, () -> list.remove(0));
+>>>>>>> upstream/joe
     }
 
     @Test
@@ -156,10 +160,17 @@ class LinkedListTest {
         list.add(major);
         list.add(joe);
 
+<<<<<<< HEAD
         list.removeHead();
         list.removeHead();
         list.removeHead();
         list.removeHead();
+=======
+        list.remove(0);
+        list.remove(0);
+        list.remove(0);
+        list.remove(0);
+>>>>>>> upstream/joe
 
         assertTrue(list.IsEmpty());
     }
